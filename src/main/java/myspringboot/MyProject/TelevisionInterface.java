@@ -3,6 +3,9 @@ package myspringboot.MyProject;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -14,6 +17,11 @@ public interface TelevisionInterface extends CrudRepository<Television, Integer>
 	public List<Television> findAllByCost(int cost);
 	public List<Television> findAllByBrand(String brand);
 	public List<Television> findAllByType(String type);
+	
+	@Transactional
+	@Modifying
+	@Query("Update Television set cost=cost*0.050 where brand=:bnd ")
+	public void updatePriceByBrand(String bnd);
 	
 	@Query("from Television where brand=:bnd and type>=:tp")
 	public List<Television> findAllByBrandandType(String bnd, String tp);

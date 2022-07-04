@@ -13,6 +13,11 @@ public class TelevisionService {
 	@Autowired
 	TelevisionInterface obj;
 	
+	public void makeUpdate(String tl) {
+		 obj.updatePriceByBrand(tl);
+		
+	}
+	
 	public String makeDelete(Television tel) {
 		String msg=tel.getModel()+"has been Deleted";
 		obj.delete(tel);

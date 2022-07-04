@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,16 @@ public class TelevisionExecutive {
 	
 	@Autowired
 	TelevisionService service;
+	
+	@PutMapping("/ups/{brand}")
+	public void callingUpdateBuyPrice(@PathVariable("brand") String brand) {
+		service.makeUpdate(brand);
+	}
+	
+	@PutMapping("/up")
+	public Television makeUpdate(@RequestBody Television tl) {
+		return service.makeNewOne(tl);
+	}
 	
 	@DeleteMapping("/del")
 	public String makeDelete(@RequestBody Television tata) {
