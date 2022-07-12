@@ -13,6 +13,20 @@ public class TelevisionService {
 	@Autowired
 	TelevisionInterface obj;
 	
+	public List<String> makeDeleteAllByCustom(String st){
+		List<String> tmp=obj.findAllByTypeLike(st);
+		obj.deleteAllByCustom(st);
+		return tmp;
+	}
+	
+	public String makeDeleteById(int key){
+		Television t=obj.findById(key).orElse(null);
+		String msg=t.getModel()+"Has Deleted";
+		obj.deleteById(key);
+		return msg;
+		
+	}
+	
 	public void makeUpdate(String tl) {
 		 obj.updatePriceByBrand(tl);
 		
@@ -39,7 +53,7 @@ public class TelevisionService {
 	public List<Television> makeReadType(String style){
 		return obj.findAllByType(style);
 	}
-	public List<Television> makeReadCost(int amount){
+	public Optional<Television> makeReadCost(int amount){
 		return obj.findAllByCost(amount);
 	}
 	

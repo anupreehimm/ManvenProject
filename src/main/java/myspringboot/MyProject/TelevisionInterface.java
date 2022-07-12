@@ -14,9 +14,17 @@ import org.springframework.stereotype.Repository;
 
 public interface TelevisionInterface extends CrudRepository<Television, Integer> {
 	
-	public List<Television> findAllByCost(int cost);
+	public Optional<Television> findAllByCost(int cost);
 	public List<Television> findAllByBrand(String brand);
 	public List<Television> findAllByType(String type);
+	
+	@Transactional
+	@Modifying
+	@Query("delete from Television where type like %:own%")
+	public void deleteAllByCustom(String own);
+	
+	@Query("select model from Television where type like %:tp%")
+	public List<String> findAllByTypeLike(String tp);
 	
 	@Transactional
 	@Modifying
@@ -28,6 +36,8 @@ public interface TelevisionInterface extends CrudRepository<Television, Integer>
 	
 	@Query("select brand from Television where model=:mdl")
 	public List<String> findAllByModel(String mdl);
+
+	
 
 	
 }

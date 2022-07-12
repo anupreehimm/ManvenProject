@@ -18,6 +18,17 @@ public class TelevisionExecutive {
 	@Autowired
 	TelevisionService service;
 	
+	@DeleteMapping("/deleall/{st}")
+	public List<String> callingDeleteByMany(@PathVariable("st") String st){
+		return service.makeDeleteAllByCustom(st);
+	}
+	
+	@DeleteMapping("/dele/{pos}")
+	public String callingDeleteId(@PathVariable("pos") int pos) {
+		return service.makeDeleteById(pos);
+		
+	}
+	
 	@PutMapping("/ups/{brand}")
 	public void callingUpdateBuyPrice(@PathVariable("brand") String brand) {
 		service.makeUpdate(brand);
@@ -55,7 +66,7 @@ public class TelevisionExecutive {
 	}
 	
 	@GetMapping("/byamount/{You}")
-	public List<Television> callingReadCost(@PathVariable("You") int You){
+	public Optional<Television> callingReadCost(@PathVariable("You") int You){
 		return service.makeReadCost(You);
 	}
 	
