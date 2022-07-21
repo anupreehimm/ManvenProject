@@ -61,12 +61,12 @@ public class TelevisionExecutive {
 	}
 	
 	@GetMapping("/bytype/{noise}")
-	public List<Television> callingReadType(@PathVariable("noise") String noise){
+	public List<String> callingReadType(@PathVariable("noise") String noise){
 		return service.makeReadType(noise);
 	}
 	
 	@GetMapping("/byamount/{You}")
-	public Optional<Television> callingReadCost(@PathVariable("You") int You){
+	public List<Television> callingReadCost(@PathVariable("You") int You){
 		return service.makeReadCost(You);
 	}
 	

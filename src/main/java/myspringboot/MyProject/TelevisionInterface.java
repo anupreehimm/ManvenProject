@@ -14,9 +14,9 @@ import org.springframework.stereotype.Repository;
 
 public interface TelevisionInterface extends CrudRepository<Television, Integer> {
 	
-	public Optional<Television> findAllByCost(int cost);
+	public List<Television> findAllByCost(int cost);
 	public List<Television> findAllByBrand(String brand);
-	public List<Television> findAllByType(String type);
+	public List<String> findAllByType(String type);
 	
 	@Transactional
 	@Modifying

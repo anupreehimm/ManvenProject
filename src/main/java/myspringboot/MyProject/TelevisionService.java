@@ -50,10 +50,10 @@ public class TelevisionService {
 		return obj.findAllByBrand(company);
 	}
 	
-	public List<Television> makeReadType(String style){
+	public List<String> makeReadType(String style){
 		return obj.findAllByType(style);
 	}
-	public Optional<Television> makeReadCost(int amount){
+	public List<Television> makeReadCost(int amount){
 		return obj.findAllByCost(amount);
 	}
 	
