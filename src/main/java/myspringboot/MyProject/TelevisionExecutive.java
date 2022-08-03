@@ -31,8 +31,7 @@ public class TelevisionExecutive {
 		resource.setPassword(newone);		
 		return ser.implementSave(resource);
 	}
-	
-	
+		
 	@DeleteMapping("/deleall/{st}")
 	public List<String> callingDeleteByMany(@PathVariable("st") String st){
 		return service.makeDeleteAllByCustom(st);
